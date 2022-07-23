@@ -10,6 +10,9 @@ public class SpringBoot1Application {
 
         System.out.println("hello");
         System.out.println("hello");
+        for (String a:args) {
+            System.out.println(a);
+        }
         SpringApplication.run(SpringBoot1Application.class, args);
     }
 
