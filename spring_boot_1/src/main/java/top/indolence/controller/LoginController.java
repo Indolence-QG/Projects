@@ -1,15 +1,28 @@
 package top.indolence.controller;
 
+
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import top.indolence.domain.User;
+import top.indolence.service.UserService;
+
+import javax.annotation.Resource;
 
 @Controller
+@CrossOrigin(origins = "*" , maxAge = 3600)
 public class LoginController {
+
+
+    @Resource
+    private UserService userService;
     @RequestMapping("/login")
-    public String test1(){
+    @ResponseBody
+    public String login(@RequestBody User user){
 
-
-        return "forward:pages/c.html";
+            boolean islogin = userService.login(user);
+            if (islogin)
+            return  "success";
+        return "fail";
     }
 }
